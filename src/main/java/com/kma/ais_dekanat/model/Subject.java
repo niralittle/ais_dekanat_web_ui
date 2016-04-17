@@ -9,7 +9,7 @@ public class Subject {
     private Integer subjectId;
     private String name;
     private FinalType finalType;
-    private Syllabus syllabus;
+    private Set<Syllabus> syllabuses;
     private Set<FinalTest> finalTests;
 
     @Id
@@ -41,14 +41,13 @@ public class Subject {
         this.finalType = finalType;
     }
 
-    @ManyToOne
-    @JoinColumn
-    public Syllabus getSyllabus() {
-        return syllabus;
+    @OneToMany(mappedBy = "group")
+    public Set<Syllabus> getSyllabuses() {
+        return syllabuses;
     }
 
-    public void setSyllabus(Syllabus syllabus) {
-        this.syllabus = syllabus;
+    public void setSyllabuses(Set<Syllabus> syllabuses) {
+        this.syllabuses = syllabuses;
     }
 
     @OneToMany(mappedBy = "subject")
