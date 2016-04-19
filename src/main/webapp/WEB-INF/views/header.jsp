@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div id="header" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div id="header" class="navbar navbar-fixed-top" role="navigation">
   <div class="container">
     <ul class="nav nav-pills list-inline">
       <li><a href="#">Головна</a></li>

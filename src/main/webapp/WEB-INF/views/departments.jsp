@@ -22,8 +22,8 @@
             action="createDepartment" method='POST' id="formCreateDepartment">
         </c:if>
         <div class="form-group">
-          <input id="name" class="form-control" type="text" placeholder="Назва  <c:if test="${editDepartment}!=null">${editDepartment.name}</c:if>">
-          <textarea id="mainInfo" rows="3" class="form-control" placeholder="Опис  <c:if test="${editDepartment}!=null">${editDepartment.mainInfo}</c:if>" required/>
+          <input id="name" class="form-control" type="text" placeholder="Назва  <c:if test="${editDepartment}!=null">${editDepartment.name}</c:if>" />
+          <textarea id="mainInfo" rows="3" class="form-control" placeholder="Опис  <c:if test="${editDepartment}!=null">${editDepartment.mainInfo}</c:if> " required ></textarea>>
           <input type="submit" class="btn btn-primary" value="Створити">
         </div>
     </form>
@@ -43,11 +43,11 @@
         <td>${department.name}</td>
         <td>${department.mainInfo}</td>
         <td>
-            <button class="btn btn-sm btn-info" onclick="editDepartment(${department.id})"><i
+            <button class="btn btn-sm btn-info" onclick="editDepartment(${department.departmentId})"><i
                     class="glyphicon glyphicon-pencil"></i> Редагувати </button>
         </td>
         <td>
-            <button class="btn btn-sm btn-danger" onclick="deleteDepartment(${department.id})"><i
+            <button class="btn btn-sm btn-danger" onclick="deleteDepartment(${department.departmentId})"><i
                     class="glyphicon glyphicon-remove"></i> Видалити </button>
         </td>
       </tr>
