@@ -15,7 +15,7 @@ public class HomeController {
     @Autowired
     RoomService roomService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
     public String helloWorld(Model model) {
         List<Room> roomList = roomService.getAllRooms();
         String message = "";

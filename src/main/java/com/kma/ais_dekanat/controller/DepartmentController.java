@@ -39,14 +39,14 @@ public class DepartmentController {
         return "redirect:/departments";
     }
 
-    @RequestMapping(value = "/deleteDepartment/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteDepartment/{id}", method = RequestMethod.GET)
     public String deleteDepartment(Model model, @PathVariable int id) {
         //TODO: add method delete by id
         departmentService.deleteDepartment(departmentService.getDepartmentById(id));
         return "redirect:/departments";
     }
 
-    @RequestMapping(value = "/editDepartment/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/editDepartment/{id}", method = RequestMethod.GET)
     public String editDepartment(Model model, @PathVariable int id) {
         Department department = departmentService.getDepartmentById(id);
         model.addAttribute("editDepartment", department);

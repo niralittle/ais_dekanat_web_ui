@@ -11,19 +11,27 @@
 <jsp:include page="attachments.jsp"/>
 <jsp:include page="header.jsp"/>
 
-<div id="content" class="container">
-  <div id="info">
-    <c:if test="${editDepartment}!=null">
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../resources/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="content" class="container" style="padding: 5%; background-color: #CED8F6;">
+  <div id="info" style="text-align: center; max-width: 400px; margin: auto;">
+    <c:if test="${ditDepartment!=null}">
       <form class="form-vertical" role="form" name='departmentform'
-            action="editDepartment/${editDepartment.id}" method='POST' id="formCreateDepartment">
+            action="/editDepartment/${editDepartment.id}" method='POST' id="formCreateDepartment">
     </c:if>
-      <c:if test="${editDepartment}!=null">
+      <c:if test="${ditDepartment==null}">
       <form class="form-vertical" role="form" name='departmentform'
-            action="createDepartment" method='POST' id="formCreateDepartment">
+            action="/createDepartment" method='POST' id="formCreateDepartment">
         </c:if>
         <div class="form-group">
-          <input id="name" class="form-control" type="text" placeholder="Назва  <c:if test="${editDepartment}!=null">${editDepartment.name}</c:if>" />
-          <textarea id="mainInfo" rows="3" class="form-control" placeholder="Опис  <c:if test="${editDepartment}!=null">${editDepartment.mainInfo}</c:if> " required ></textarea>>
+          <input id="name" class="form-control" type="text" placeholder="Назва  <c:if test="${editDepartment!=null}">${editDepartment.name}</c:if>" />
+          <textarea id="mainInfo" rows="3" class="form-control" placeholder="Опис  <c:if test="${editDepartment!=null}">${editDepartment.mainInfo}</c:if> " required ></textarea>
           <input type="submit" class="btn btn-primary" value="Створити">
         </div>
     </form>
@@ -55,20 +63,14 @@
     </tbody>
   </table>
 </div>
-<div class="modal-body" align="center">
-  <form id="conf" name="conf" action="" method="POST">
-    <button type="submit" class="btn btn-sm btn-info">Так</button>
-  </form>
-</div>
 <jsp:include page="footer.jsp"/>
+</body>
 <script>
   function editDepartment(departmentId){
-    document.getElementById("conf").action = "<c:url value='/editDepartment/" + departmentId+ "'/>";
-    document.getElementById("conf").method='POST';
+    window.location.replace("<c:url value='/editDepartment/" + departmentId+ "'/>");
   }
   function deleteDepartment(departmentId){
-    document.getElementById("conf").action = "<c:url value='/deleteDepartment/" + departmentId+ "'/>";
-    document.getElementById("conf").method='POST';
+    window.location.replace("<c:url value='/deleteDepartment/" + departmentId+ "'/>");
   }
 </script>
 </html>
