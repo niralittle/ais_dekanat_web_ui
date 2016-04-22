@@ -1,5 +1,7 @@
 package com.kma.ais_dekanat.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -24,7 +26,7 @@ public class UniversityGroup {
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;
     }
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     public Department getDepartment() {

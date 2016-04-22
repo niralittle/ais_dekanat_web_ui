@@ -19,8 +19,27 @@ public class StudentService {
 
     @Transactional
     public List<Student> getAllStudents() {
-        Criteria crit = genericDAO.createCriteria(Student.class)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).setMaxResults(20);
+        Criteria crit = genericDAO.createCriteria(Student.class);
         return crit.list();
+    }
+    @Transactional
+    public void createStudent(Student student) {
+        genericDAO.save(student);
+    }
+
+
+    @Transactional
+    public void deleteStudent(Student student) {
+        genericDAO.delete(student);
+    }
+
+    @Transactional
+    public Student getStudentById(Integer id) {
+        return genericDAO.get(Student.class, id);
+    }
+
+    @Transactional
+    public void saveOrUpdateStudent(Student student) {
+        genericDAO.saveOrUpdate(student);
     }
 }
