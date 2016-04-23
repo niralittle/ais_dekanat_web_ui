@@ -81,14 +81,14 @@
                                                           cssClass="input-error-notif" element="div"/></div>
 
             </div>
-
+              <p>${groupName}</p>
             <div class="form-group">
                 <div class="col-md-3">
                     <label class="label-style" for="sel1"><spring:message
                             code="student.course"/>:</label>
                     <select name="courseNumber" class="form-control select-style" id="sel1" path="courseNumber"
                             onchange="getUniversityGroup()">
-                        <option value="" disabled selected></option>
+                        <option value="${course}" selected>${course}</option>
                         <c:forEach items="${universityGroups}" var="item" varStatus="count">
                             <option value="${item.course}">${item.course}</option>
                         </c:forEach>
@@ -99,11 +99,13 @@
                             code="student.department"/>:</label>
                     <select name="department" class="form-control select-style" id="sel2"
                             path="department">
-                        <option value="" disabled selected></option>
+                        <option value="${groupName}" selected>${groupName}</option>
+
                     </select>
                 </div>
 
             </div>
+            <input type="hidden" name="id" value="${id}"/>
 
             <div class="form-group">
                 <div class="col-md-6">

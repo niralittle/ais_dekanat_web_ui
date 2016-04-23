@@ -84,7 +84,9 @@ public class StudentController {
         }
         List<UniversityGroup> universityGroups = universityGroupService.getAllUniversityGroup();
         model.addAttribute("fullname", student.getFullName());
+        model.addAttribute("editStudent", student);
         model.addAttribute("course",student.getGroup().getCourse());
+        model.addAttribute("id", student.getStudentId());
         model.addAttribute("groupName", student.getGroup().getName());
         model.addAttribute("universityGroups", universityGroups);
 
@@ -92,7 +94,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/student/edit/save", method = RequestMethod.POST)
-    public String studentEdited(@RequestParam("courseNumber") Integer course, @RequestParam("department") String department,@ModelAttribute("id") Integer id, @ModelAttribute("editStudent") Student student, ModelMap model, BindingResult result) {
+    public String studentEdited(@RequestParam("courseNumber") Integer course, @RequestParam("department") String department,@RequestParam("id") Integer id, @ModelAttribute("editStudent") Student student, ModelMap model, BindingResult result) {
         validator.validate(student, result);
 
         if (result.hasErrors()) {
@@ -100,15 +102,16 @@ public class StudentController {
             model.addAttribute("fullname", student.getFullName());
             model.addAttribute("course",student.getGroup().getCourse());
             model.addAttribute("groupName", student.getGroup().getName());
-            model.addAttribute("newStudent", student);
+            model.addAttribute("editStudent", student);
             model.addAttribute("universityGroups", universityGroups);
-            return "studentPage/createStudent";
+            return "/student/edit/";
         }
+        System.out.println(course+" "+department);
         UniversityGroup group = universityGroupService.getGroupByDepAndCourse(course, department);
         student.setStudentId(id);
         student.setGroup(group);
         studentService.saveOrUpdateStudent(student);
 
-        return "redirect:/student/studenthome";
+        return "redirect:/student/home";
     }
 }
