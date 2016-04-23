@@ -68,9 +68,9 @@
         </div>
     </nav>
     <div class="col-md-offset-7 top-block">
-        <form id="add-order-form" class="form-horizontal" method="get" action="/user/createOrder">
+        <form id="add-order-form" class="form-horizontal" method="get" action="/student/create">
             <div class="col-md-offset-7 col-md-4">
-                <button id="Adm_Button" type="submit" class="btn btn-primary btn-block"></button>
+                <button id="Adm_Button" type="submit" class="btn btn-primary btn-block">Create Student</button>
             </div>
         </form>
     </div>

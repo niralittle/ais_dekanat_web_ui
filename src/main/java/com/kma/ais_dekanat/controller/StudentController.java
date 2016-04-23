@@ -7,6 +7,8 @@ import com.kma.ais_dekanat.service.UniversityGroupService;
 import com.kma.ais_dekanat.utils.StudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -73,5 +75,40 @@ public class StudentController {
         return "redirect:/student/home";
     }
 
+    @RequestMapping(value = "/student/edit/{id}", method = RequestMethod.GET)
+    public String editStudent(@PathVariable("id") Integer id, Model model) {
+        Student student = studentService.getStudentById(id);
 
+        if (student == null) {
+            return "redirect:/student/created_student";
+        }
+        List<UniversityGroup> universityGroups = universityGroupService.getAllUniversityGroup();
+        model.addAttribute("fullname", student.getFullName());
+        model.addAttribute("course",student.getGroup().getCourse());
+        model.addAttribute("groupName", student.getGroup().getName());
+        model.addAttribute("universityGroups", universityGroups);
+
+        return "studentPage/editStudent";
+    }
+
+    @RequestMapping(value = "/student/edit/save", method = RequestMethod.POST)
+    public String studentEdited(@RequestParam("courseNumber") Integer course, @RequestParam("department") String department,@ModelAttribute("id") Integer id, @ModelAttribute("editStudent") Student student, ModelMap model, BindingResult result) {
+        validator.validate(student, result);
+
+        if (result.hasErrors()) {
+            List<UniversityGroup> universityGroups = universityGroupService.getAllUniversityGroup();
+            model.addAttribute("fullname", student.getFullName());
+            model.addAttribute("course",student.getGroup().getCourse());
+            model.addAttribute("groupName", student.getGroup().getName());
+            model.addAttribute("newStudent", student);
+            model.addAttribute("universityGroups", universityGroups);
+            return "studentPage/createStudent";
+        }
+        UniversityGroup group = universityGroupService.getGroupByDepAndCourse(course, department);
+        student.setStudentId(id);
+        student.setGroup(group);
+        studentService.saveOrUpdateStudent(student);
+
+        return "redirect:/student/studenthome";
+    }
 }
