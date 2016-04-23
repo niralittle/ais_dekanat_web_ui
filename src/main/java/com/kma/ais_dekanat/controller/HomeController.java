@@ -24,7 +24,7 @@ public class HomeController {
         }
 
         model.addAttribute("message", message);
-        return "mainPage/mainPage";
+        return "/index";
     }
 
 }
