@@ -68,8 +68,8 @@
               ${professor.fullName} </br>
             </c:forEach>
           </td>
-          <td class='btn-col'><form action="/editcathedra/${cathedra.cathedraId}"><button class="icon-btn btn btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span></button></form></td>
-          <td class='btn-col'><form action="/deletecathedra/${cathedra.cathedraId}"><button class="icon-btn btn btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-remove icon" aria-hidden="true"></span></button></form></td>
+          <td class='btn-col'><form action="/editCathedra/${cathedra.cathedraId}"><button class="icon-btn btn btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span></button></form></td>
+          <td class='btn-col'><form action="/deleteCathedra/${cathedra.cathedraId}"><button class="icon-btn btn btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-remove icon" aria-hidden="true"></span></button></form></td>
         </tr>
       </c:forEach>
       </thead>

@@ -7,10 +7,7 @@ import com.kma.ais_dekanat.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -36,8 +33,9 @@ public class CathedrasController {
     }
 
     @RequestMapping(value = "/createCathedra", method = RequestMethod.POST)
-    public String createCathedra(Model model, @ModelAttribute("newCathedra") Cathedra newCathedra, @ModelAttribute("department") Integer departmentId) {
-        newCathedra.setDepartment(departmentService.getDepartmentById(departmentId));
+    public String createCathedra(Model model, @ModelAttribute("newCathedra") Cathedra newCathedra,
+                                 @ModelAttribute("departmentId") Department department) {
+        newCathedra.setDepartment(departmentService.getDepartmentById(department.getDepartmentId()));
         if (!cathedraService.validate(newCathedra)) {
             model.addAttribute("error","Fill all fields");
             return "/createCathedra";
@@ -64,17 +62,23 @@ public class CathedrasController {
     @RequestMapping(value = "/editCathedra/{id}", method = RequestMethod.GET)
     public String getEditCathedraPage(Model model, @PathVariable int id) {
         Cathedra cathedra = cathedraService.getCathedraById(id);
+        List<Department> departments = departmentService.getAllDepartments();
+        model.addAttribute("departments", departments);
         model.addAttribute("editCathedra", cathedra);
         return "/editCathedra";
     }
 
     @RequestMapping(value = "/editCathedra/{id}", method = RequestMethod.POST)
-    public String editCathedra(Model model, @PathVariable int id, @ModelAttribute("editCathedra") Cathedra editCathedra) {
+    public String editCathedra(Model model, @PathVariable int id,
+                               @ModelAttribute("editCathedra") Cathedra editCathedra,
+                               @ModelAttribute("departmentId") Department department) {
         if (!cathedraService.validate(editCathedra)) {
             model.addAttribute("error","Fill all fields");
             return "/editCathedra/"+id+"";
         }
+        editCathedra.setCathedraId(id);
+        editCathedra.setDepartment(departmentService.getDepartmentById(department.getDepartmentId()));
         cathedraService.saveOrUpdateCathedra(editCathedra);
-        return "/cathedras";
+        return "redirect:/cathedras";
     }
 }

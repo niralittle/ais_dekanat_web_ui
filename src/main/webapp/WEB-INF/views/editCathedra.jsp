@@ -23,20 +23,21 @@
 
   <div class="col-md-offset-4 col-md-8 vertalign bottom-block">
 
-    <form:form class="form-horizontal" id="newCathedra" action="/createCathedra"  method="post">
+    <form:form class="form-horizontal" id="newCathedra" action="/editCathedra/${editCathedra.cathedraId}"  method="post">
       <div class="form-group">
         <div class="col-md-4">
-          <input type="text" class="form-control form-style" id="name" name="name" value="${newCathedra.name}" placeholder="<spring:message code="cathedra.name"/>">
+          <input type="text" class="form-control form-style" id="name" name="name" value="${editCathedra.name}" placeholder="<spring:message code="cathedra.name"/>">
         </div>
       </div>
       <div class="col-md-4">
         <label class="label-style" for="sel2"><spring:message code="cathedra.department"/>:</label>
         <select name="departmentId" class="form-control select-style" id="sel2"
                 path="departmentId">
-          <option value="" disabled selected></option>
           <c:forEach items="${departments}" var="department" varStatus="count">
-            <option value="${department.departmentId}">
-              ${department.name}
+            <option
+                    <c:if test="${editCathedra.department.departmentId == department.departmentId}"> selected </c:if>
+                    value="${department.departmentId}">
+                ${department.name}
             </option>
           </c:forEach>
         </select>
@@ -44,7 +45,7 @@
 
       <div class="form-group">
         <div class="col-md-4">
-          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="cathedra.create"/></button>
+          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="cathedra.edit"/></button>
         </div>
       </div>
 
