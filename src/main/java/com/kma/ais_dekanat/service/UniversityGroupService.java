@@ -38,11 +38,21 @@ public class UniversityGroupService {
         return genericDAO.get(UniversityGroup.class, id);
     }
     @Transactional
-    public UniversityGroup getGroupByDepAndCourse(Integer course,String name) {
-        Criteria crit = genericDAO.createCriteria(UniversityGroup.class).add(Restrictions.eq("course", course)).add(Restrictions.eq("name", name));
+    public UniversityGroup getGroupByDepAndCourse(Integer course, String name) {
+        Criteria crit = genericDAO.createCriteria(UniversityGroup.class).add(Restrictions.eq("course", course))
+                .add(Restrictions.eq("name", name));
         List<UniversityGroup> universityGroups = crit.list();
        return universityGroups.get(0);
     }
+
+    @Transactional
+    public List<UniversityGroup> getGroupByDeptIdAndYear(Integer deptId, Integer course) {
+        Criteria crit = genericDAO.createCriteria(UniversityGroup.class)
+                .add(Restrictions.eq("department.departmentId", deptId))
+                .add(Restrictions.eq("course", course));
+        return crit.list();
+    }
+
     @Transactional
     public List<UniversityGroup>  getUniversityGroupByCourse(Integer id) {
         Criteria crit = genericDAO.createCriteria(UniversityGroup.class).add(Restrictions.eq("course", id));

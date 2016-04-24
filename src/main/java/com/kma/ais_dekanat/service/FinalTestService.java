@@ -62,6 +62,6 @@ public class FinalTestService {
 
 //    @Transactional
 //    public List<FinalTest> getFinalTestsByProfessorIdAndFinalType(String professorId, FinalType finalType) {
-//        Criteria criteria = genericDAO.createCriteria()
+//        Criteria criteria = dao.createCriteria()
 //    }
 }

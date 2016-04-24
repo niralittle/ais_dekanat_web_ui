@@ -28,6 +28,11 @@ public class DepartmentController {
         return "/departments";
     }
 
+    @RequestMapping(value = "/departments/all", method = RequestMethod.GET)
+    public @ResponseBody List<Department> getAllDeptartments () {
+        return departmentService.getAllDepartments();
+    }
+
     @RequestMapping(value = "/createDepartment", method = RequestMethod.POST)
     public String createDepartment(Model model, @ModelAttribute("newDepartment") Department newDepartment) {
         if (newDepartment.getName().length()<1 || newDepartment.getMainInfo().length()<1) {
