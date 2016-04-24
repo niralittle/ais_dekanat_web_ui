@@ -37,7 +37,7 @@ public class DepartmentService {
     }
 
     @Transactional
-    public void saveOrUpdateCathedra(Department department) {
+    public void updateDepartment(Department department) {
         genericDAO.saveOrUpdate(department);
     }
 }

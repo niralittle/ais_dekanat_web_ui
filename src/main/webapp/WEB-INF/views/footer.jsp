@@ -1,11 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 19.04.2016
-  Time: 2:23
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div id="footer" class="navbar-fixed-bottom row-fluid" style="background-color: #8181F7; text-align: center;">
-  <b>Київ, НаУКМА, 2016</b>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+
+<div id="footer">
+  <div class="thick"></div>
+  <div class="thin"></div>
+  <div><p class="footertext"><spring:message code="login.footer"/></p></div>
+  <div id="localization">
+    <a href="?lang=en" class="language"><spring:message code="language.en"/></a>
+    <a href="?lang=ua" class="language"><spring:message code="language.ua"/></a>
+  </div>
 </div>

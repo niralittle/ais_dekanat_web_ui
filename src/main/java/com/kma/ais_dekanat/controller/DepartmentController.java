@@ -39,6 +39,12 @@ public class DepartmentController {
         return "redirect:/departments";
     }
 
+    @RequestMapping(value = "/createDepartment", method = RequestMethod.GET)
+    public String getCreateDepartmentPage(Model model, HttpServletRequest request) {
+        return "/createDepartment";
+    }
+
+
     @RequestMapping(value = "/deleteDepartment/{id}", method = RequestMethod.GET)
     public String deleteDepartment(Model model, @PathVariable int id) {
         //TODO: add method delete by id
@@ -47,12 +53,21 @@ public class DepartmentController {
     }
 
     @RequestMapping(value = "/editDepartment/{id}", method = RequestMethod.GET)
-    public String editDepartment(Model model, @PathVariable int id) {
+    public String getEditDepartmentPage(Model model, @PathVariable int id) {
         Department department = departmentService.getDepartmentById(id);
         model.addAttribute("editDepartment", department);
-        List<Department> departments = departmentService.getAllDepartments();
-        model.addAttribute("departments", departments);
-        return "/departments";
+//        List<Department> departments = departmentService.getAllDepartments();
+//        model.addAttribute("departments", departments);
+        return "/createDepartment";
+    }
+
+    @RequestMapping(value = "/editDepartment/{id}", method = RequestMethod.POST)
+    public String editDepartment(Model model, @PathVariable int id, HttpServletRequest request) {
+        Department department = departmentService.getDepartmentById(id);
+        department.setName(request.getParameter("name"));
+        department.setMainInfo(request.getParameter("mainInfo"));
+        departmentService.updateDepartment(department);
+        return "/createDepartment";
     }
 
 }
