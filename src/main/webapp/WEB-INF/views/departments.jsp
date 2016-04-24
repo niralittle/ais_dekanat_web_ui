@@ -30,22 +30,6 @@
 <body>
 <div id="wrap">
   <jsp:include page="header.jsp"/>
-  <%--<div id="info" style="text-align: center; max-width: 400px; margin: auto;">--%>
-    <%--<c:if test="${editDepartment!=null}">--%>
-      <%--<form class="form-vertical" role="form" name='departmentform'--%>
-            <%--action="/editDepartment/${editDepartment.departmentId}" method='GET' id="formCreateDepartment">--%>
-    <%--</c:if>--%>
-      <%--<c:if test="${editDepartment==null}">--%>
-      <%--<form class="form-vertical" role="form" name='departmentform'--%>
-            <%--action="/createDepartment" method='POST' id="formCreateDepartment">--%>
-        <%--</c:if>--%>
-        <%--<div class="form-group">--%>
-          <%--<input id="name" class="form-control" type="text" placeholder="Назва" value="<c:if test="${editDepartment!=null}">${editDepartment.name}</c:if>" />--%>
-          <%--<textarea id="mainInfo" rows="3" class="form-control" placeholder="Опис"  value="<c:if test="${editDepartment!=null}">${editDepartment.mainInfo}</c:if> " required ></textarea>--%>
-          <%--<input type="submit" class="btn btn-primary" value="Створити">--%>
-        <%--</div>--%>
-    <%--</form>--%>
-  <%--</div>--%>
 
   <div class="col-md-offset-7 top-block">
     <form id="add-order-form" class="form-horizontal" method="get" action="/createDepartment">

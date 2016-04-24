@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class Professor {
+public class Professor implements Comparable{
     private Integer professorId;
     private String fullName;
     private String academicDegree;
@@ -47,5 +47,12 @@ public class Professor {
 
     public void setCathedra(Cathedra cathedra) {
         this.cathedra = cathedra;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o==null||!(o instanceof Professor)) return 1;
+        if (((Professor)o).getFullName()==null) return 1;
+        return this.getFullName().compareTo(((Professor)o).getFullName());
     }
 }

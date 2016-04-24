@@ -16,8 +16,8 @@ public class ProfessorService {
 
     @Transactional
     public List<Professor> getAllProfessors() {
-        Criteria crit = genericDAO.createCriteria(Professor.class)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        Criteria crit = genericDAO.createCriteria(Professor.class);
+//                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return crit.list();
     }
 

@@ -1,5 +1,7 @@
 package com.kma.ais_dekanat.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -40,6 +42,7 @@ public class Cathedra {
         this.department = department;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cathedra")
     public Set<Professor> getProfessors() {
         return professors;

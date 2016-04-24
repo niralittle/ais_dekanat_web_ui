@@ -3,12 +3,11 @@ package com.kma.ais_dekanat.controller;
 import com.kma.ais_dekanat.model.Department;
 import com.kma.ais_dekanat.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -30,12 +29,12 @@ public class DepartmentController {
     }
 
     @RequestMapping(value = "/createDepartment", method = RequestMethod.POST)
-    public String createDepartment(Model model, HttpServletRequest request) {
-        Department department = new Department();
-        department.setName(request.getParameter("name"));
-        department.setMainInfo(request.getParameter("mainInfo"));
-
-        departmentService.createDepartment(department);
+    public String createDepartment(Model model, @ModelAttribute("newDepartment") Department newDepartment) {
+        if (newDepartment.getName().length()<1 || newDepartment.getMainInfo().length()<1) {
+            model.addAttribute("error","Fill all fields");
+            return "/createDepartment";
+        }
+        departmentService.createDepartment(newDepartment);
         return "redirect:/departments";
     }
 
@@ -56,18 +55,19 @@ public class DepartmentController {
     public String getEditDepartmentPage(Model model, @PathVariable int id) {
         Department department = departmentService.getDepartmentById(id);
         model.addAttribute("editDepartment", department);
-//        List<Department> departments = departmentService.getAllDepartments();
-//        model.addAttribute("departments", departments);
-        return "/createDepartment";
+        return "/editDepartment";
     }
 
     @RequestMapping(value = "/editDepartment/{id}", method = RequestMethod.POST)
-    public String editDepartment(Model model, @PathVariable int id, HttpServletRequest request) {
-        Department department = departmentService.getDepartmentById(id);
-        department.setName(request.getParameter("name"));
-        department.setMainInfo(request.getParameter("mainInfo"));
-        departmentService.updateDepartment(department);
-        return "/createDepartment";
+    public String editDepartment(Model model, @PathVariable int id, @ModelAttribute("editDepartment") Department editDepartment) {
+        if (editDepartment.getName().length()<1 || editDepartment.getMainInfo().length()<1) {
+            model.addAttribute("error","Fill all fields");
+            model.addAttribute("editDepartment", editDepartment);
+            return "/editDepartment/"+id+"";
+        }
+        editDepartment.setDepartmentId(id);
+        departmentService.updateDepartment(editDepartment);
+        return "redirect:/departments";
     }
 
 }

@@ -17,23 +17,23 @@
   </div>
     <ul class="nav nav-pills list-inline">
       <li><a href="index"><spring:message code="menu.index"/></a></li>
-      <li class="dropdown nav-pill"><a id="toplink" class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <li class="dropdown nav-pill"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <spring:message code="menu.admin"/>
         <b class="caret"></b>
       </a>
         <ul class="dropdown-menu">
-          <li><a href="#"><spring:message code="menu.cathedra"/></a></li>
+          <li><a href="cathedras"><spring:message code="menu.cathedra"/></a></li>
           <li><a href="departments"><spring:message code="menu.fuck"/></a></li>
-          <li><a href="#"><spring:message code="menu.rooms"/></a></li>
+          <li><a href="rooms"><spring:message code="menu.rooms"/></a></li>
         </ul>
-      </li class="dropdown">
-      <li class="dropdown"><a id="toplink" class="dropdown-toggle" data-toggle="dropdown" href="#">
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <spring:message code="menu.people"/>
         <b class="caret"></b>
       </a>
         <ul class="dropdown-menu">
           <li><a href="student/home"><spring:message code="menu.student"/></a></li>
-          <li><a href="#"><spring:message code="menu.professor"/></a></li>
+          <li><a href="professors"><spring:message code="menu.professor"/></a></li>
         </ul>
       </li>
       <li class="dropdown"><a id="toplink" class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -41,7 +41,7 @@
         <b class="caret"></b>
       </a>
         <ul class="dropdown-menu">
-          <li><a href="#"><spring:message code="menu.courses"/></a></li>
+          <li><a href="courses"><spring:message code="menu.courses"/></a></li>
         </ul>
 
       </li>

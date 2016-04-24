@@ -23,25 +23,28 @@
 
   <div class="col-md-offset-4 col-md-8 vertalign bottom-block">
 
-        <form:form class="form-horizontal" id="newDepartment" action="/createDepartment"  method="post">
+    <form:form class="form-horizontal" id="newDepartment" action="/editDepartment/${editDepartment.departmentId}"  method="post">
       <div class="form-group">
-
         <div class="col-md-6">
-          <input type="text" class="form-control form-style" id="name" name="name" value="${newDepartment.name}" placeholder="<spring:message code="department.name"/>">
+          <input type="text" class="form-control form-style" id="name" name="name" value="${editDepartment.name}">
         </div>
       </div>
       <div class="form-group">
         <div class="col-md-6">
-          <input type="text" class="form-control form-style" id="mainInfo" name="mainInfo" value="${newDepartment.mainInfo}" placeholder="<spring:message code="department.description"/>">
+          <input type="text" class="form-control form-style" id="mainInfo" name="mainInfo" value="${editDepartment.mainInfo}">
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-md-6">
-          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="department.create"/></button>
+          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="department.edit"/></button>
         </div>
       </div>
+      <div class="form-group">
+        <div class="col-md-6">
 
+        </div>
+      </div>
     </form:form>
   </div>
 
