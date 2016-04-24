@@ -1,7 +1,7 @@
 package com.kma.ais_dekanat.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Set;
 
 
@@ -11,7 +11,7 @@ public class FinalTest {
     private Integer finalId;
     private UniversityGroup group;
     private Subject subject;
-    private Date time;
+    private Timestamp time;
     private Room room;
     private Set<FinalReport> finalReports;
 
@@ -46,11 +46,11 @@ public class FinalTest {
         this.subject = subject;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
