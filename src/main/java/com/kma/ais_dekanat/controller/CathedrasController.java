@@ -31,13 +31,13 @@ public class CathedrasController {
     @RequestMapping(value = "/cathedras", method = RequestMethod.GET)
     public String getCathedras (Model model) {
         List<Cathedra> cathedras = cathedraService.getAllCathedras();
-
         model.addAttribute("cathedras", cathedras);
         return "/cathedras";
     }
 
     @RequestMapping(value = "/createCathedra", method = RequestMethod.POST)
-    public String createCathedra(Model model, @ModelAttribute("newCathedra") Cathedra newCathedra) {
+    public String createCathedra(Model model, @ModelAttribute("newCathedra") Cathedra newCathedra, @ModelAttribute("department") Integer departmentId) {
+        newCathedra.setDepartment(departmentService.getDepartmentById(departmentId));
         if (!cathedraService.validate(newCathedra)) {
             model.addAttribute("error","Fill all fields");
             return "/createCathedra";
