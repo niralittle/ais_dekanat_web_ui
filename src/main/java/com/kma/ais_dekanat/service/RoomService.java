@@ -25,4 +25,14 @@ public class RoomService {
     public void createRoom(Room room){
         genericDAO.save(room);
     }
+
+    @Transactional
+    public Room getRoomById(int id) {
+        return genericDAO.get(Room.class, id);
+    }
+
+    @Transactional
+    public void deleteRoom(Room room) {
+        genericDAO.delete(room);
+    }
 }

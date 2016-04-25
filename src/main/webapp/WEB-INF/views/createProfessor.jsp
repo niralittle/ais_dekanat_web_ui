@@ -25,19 +25,21 @@
 
     <form:form class="form-horizontal" id="newProfessor" action="/createProfessor"  method="post">
       <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <input type="text" class="form-control form-style" id="fullName" name="fullName" value="${newProfessor.fullName}"
-                 placeholder="<spring:message code="professor.name"/>">
+                 placeholder="<spring:message code="professor.name"/>" />
         </div>
       </div>
+
       <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <input type="text" class="form-control form-style" id="academicDegree" name="academicDegree" value="${newProfessor.academicDegree}"
-                 placeholder="<spring:message code="professor.degree"/>">
+                 placeholder="<spring:message code="professor.degree"/>" />
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label class="label-style" for="sel2"><spring:message code="professor.cathedra"/>:</label>
+        </br>
         <select name="cathedraId" class="form-control select-style" id="sel2"
                 path="cathedraId">
           <option value="" disabled selected></option>
@@ -47,16 +49,16 @@
             </option>
           </c:forEach>
         </select>
-      </div>
 
       <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="professor.create"/></button>
         </div>
       </div>
 
     </form:form>
   </div>
+
   <jsp:include page="footer.jsp"/>
 </div>
 </body>

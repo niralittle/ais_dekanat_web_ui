@@ -25,21 +25,22 @@
 
     <form:form class="form-horizontal" id="newProfessor" action="/editProfessor/${editProfessor.professorId}"  method="post">
       <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <input type="text" class="form-control form-style" id="fullName" name="fullName"
                  value="${editProfessor.fullName}"
                  placeholder="<spring:message code="professor.name"/>">
         </div>
       </div>
       <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <input type="text" class="form-control form-style" id="academicDegree" name="academicDegree"
                  value="${editProfessor.academicDegree}"
                  placeholder="<spring:message code="professor.degree"/>">
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label class="label-style" for="sel2"><spring:message code="professor.cathedra"/>:</label>
+        </br>
         <select name="cathedraId" class="form-control select-style" id="sel2"
                 path="cathedraId">
           <c:forEach items="${cathedras}" var="cathedra" varStatus="count">
@@ -51,10 +52,10 @@
           </c:forEach>
         </select>
       </div>
-
+      </br>
       <div class="form-group">
-        <div class="col-md-4">
-          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="professor.edit"/></button>
+        <div class="col-md-6">
+          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block" style="margin-right: 15px;"><spring:message code="professor.edit"/></button>
         </div>
       </div>
 

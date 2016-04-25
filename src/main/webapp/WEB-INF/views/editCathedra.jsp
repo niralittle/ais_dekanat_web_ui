@@ -25,12 +25,13 @@
 
     <form:form class="form-horizontal" id="newCathedra" action="/editCathedra/${editCathedra.cathedraId}"  method="post">
       <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <input type="text" class="form-control form-style" id="name" name="name" value="${editCathedra.name}" placeholder="<spring:message code="cathedra.name"/>">
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label class="label-style" for="sel2"><spring:message code="cathedra.department"/>:</label>
+        </br>
         <select name="departmentId" class="form-control select-style" id="sel2"
                 path="departmentId">
           <c:forEach items="${departments}" var="department" varStatus="count">
@@ -42,10 +43,10 @@
           </c:forEach>
         </select>
       </div>
-
+</br>
       <div class="form-group">
-        <div class="col-md-4">
-          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block"><spring:message code="cathedra.edit"/></button>
+        <div class="col-md-6">
+          <button id="btn-create-order" type="submit" class="btn btn-primary btn-block" style="margin-right: 15px;"><spring:message code="cathedra.edit"/></button>
         </div>
       </div>
 
