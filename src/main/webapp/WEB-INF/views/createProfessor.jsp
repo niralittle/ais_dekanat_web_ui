@@ -49,6 +49,7 @@
             </option>
           </c:forEach>
         </select>
+      </div>
 
       <div class="form-group">
         <div class="col-md-6">
