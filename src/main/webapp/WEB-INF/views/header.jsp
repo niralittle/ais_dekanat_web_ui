@@ -1,9 +1,7 @@
 <%--
-  Created by IntelliJ IDEA.
   User: user
   Date: 19.04.2016
   Time: 1:33
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,7 +10,7 @@
 
 <div id="header" style="align-content: center;">
   <div class="navbar-header">
-    <a href="/user/userhome"><img id="logo" alt="brand" src="../../../resources/img/logo.png"
+    <a href="/user/userhome"><img id="logo" alt="brand" src="../../resources/img/logo.png"
                                   style="width: 305px; height:65px; margin-top:11px;"></a>
   </div>
     <ul class="nav nav-pills list-inline">
@@ -23,6 +21,8 @@
       </a>
         <ul class="dropdown-menu">
           <li><a href="cathedras"><spring:message code="menu.cathedra"/></a></li>
+          <li><a href="exams/group"><spring:message code="menu.exams_by_group"/></a></li>
+          <li><a href="exams/professor"><spring:message code="menu.exams_by_professor"/></a></li>
           <li><a href="departments"><spring:message code="menu.fuck"/></a></li>
           <li><a href="rooms"><spring:message code="menu.rooms"/></a></li>
         </ul>

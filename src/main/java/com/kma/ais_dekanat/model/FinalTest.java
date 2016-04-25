@@ -1,5 +1,7 @@
 package com.kma.ais_dekanat.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
@@ -48,6 +50,11 @@ public class FinalTest {
 
     public Timestamp getTime() {
         return time;
+    }
+
+    @Transient
+    public DateTime prepTime() {
+        return new DateTime(time.getTime());
     }
 
     public void setTime(Timestamp time) {

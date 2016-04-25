@@ -14,7 +14,6 @@ public class UniversityGroup {
     private String name;
     private Set<Student> students;
     private Set<FinalTest> finals;
-    private Set<Syllabus> syllabuses;
 
     @Id
     @GeneratedValue
@@ -71,12 +70,4 @@ public class UniversityGroup {
         this.finals = finals;
     }
 
-    @OneToMany(mappedBy = "group")
-    public Set<Syllabus> getSyllabuses() {
-        return syllabuses;
-    }
-
-    public void setSyllabuses(Set<Syllabus> syllabuses) {
-        this.syllabuses = syllabuses;
-    }
 }

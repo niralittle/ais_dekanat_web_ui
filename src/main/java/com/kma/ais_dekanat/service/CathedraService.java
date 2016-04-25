@@ -72,9 +72,7 @@ public class CathedraService {
         Criteria crit = genericDAO.createCriteria(Cathedra.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                 .add(Restrictions.eq("department.departmentId", id));
-        List<Cathedra> cathedras = crit.list();
-        System.out.println(cathedras.size());
-        return cathedras;
+        return crit.list();
     }
 
     public boolean validate(Cathedra newCathedra) {

@@ -3,6 +3,7 @@ package com.kma.ais_dekanat.service;
 import com.kma.ais_dekanat.dao.GenericDAO;
 import com.kma.ais_dekanat.model.Professor;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,5 +41,13 @@ public class ProfessorService {
     @Transactional
     public void saveOrUpdateProfessor(Professor professor) {
         genericDAO.saveOrUpdate(professor);
+    }
+
+    @Transactional
+    public List<Professor> getProfessorByCathedraId(Integer id) {
+        return genericDAO.createCriteria(Professor.class)
+                .add(Restrictions.eq("cathedra.cathedraId", id))
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .list();
     }
 }

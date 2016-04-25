@@ -3,23 +3,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
-  Created by IntelliJ IDEA.
   User: user
   Date: 19.04.2016
   Time: 2:44
-  To change this template use File | Settings | File Templates.
 --%>
 <html>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title><spring:message code="department.title" /></title>
-  <link href="../../../resources/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
-  <link rel="stylesheet" href="../../../resources/css/bootstrap.css">
-  <link rel="stylesheet" href="../../../resources/css/main.css" type="text/css" media="screen"/>
-  <script src="../../../resources/js/jquery-1.11.3.js"></script>
-  <script src="../../../resources/js/bootstrap.min.js"></script>
-  <script src="../../../resources/js/tsort.js"></script>
+  <link href="../../resources/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+  <link rel="stylesheet" href="../../resources/css/bootstrap.css">
+  <link rel="stylesheet" href="../../resources/css/main.css" type="text/css" media="screen"/>
+  <script src="../../resources/js/jquery-1.11.3.js"></script>
+  <script src="../../resources/js/bootstrap.min.js"></script>
+  <script src="../../resources/js/tsort.js"></script>
   <script>
 
     $(document).ready(function () {

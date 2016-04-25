@@ -4,6 +4,7 @@ import com.kma.ais_dekanat.model.Cathedra;
 import com.kma.ais_dekanat.model.Department;
 import com.kma.ais_dekanat.service.CathedraService;
 import com.kma.ais_dekanat.service.DepartmentService;
+import com.kma.ais_dekanat.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,14 @@ public class CathedrasController {
     private DepartmentService departmentService;
 
     @Autowired
-    private CathedraService cathedraService;
+    CathedraService cathedraService;
+    @Autowired
+    ProfessorService professorService;
+
+    @RequestMapping(value = "/cathedras/department/{id}", method = RequestMethod.GET)
+    public @ResponseBody List<Cathedra> getCathedrasByDepartmentId(@PathVariable(value = "id") Integer id) {
+        return cathedraService.getCathedrasByDepartmentId(id);
+    }
 
     @RequestMapping(value = "/cathedras", method = RequestMethod.GET)
     public String getCathedras (Model model) {

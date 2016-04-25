@@ -1,4 +1,4 @@
-package com.kma.ais_dekanat.resource_controller;
+package com.kma.ais_dekanat.controller;
 
 import com.kma.ais_dekanat.model.UniversityGroup;
 import com.kma.ais_dekanat.service.UniversityGroupService;
